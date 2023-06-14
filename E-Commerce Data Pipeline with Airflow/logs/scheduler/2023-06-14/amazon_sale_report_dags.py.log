@@ -1,0 +1,28 @@
+[2023-06-14T17:07:20.498+0000] {processor.py:157} INFO - Started process (PID=736) to work on /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:07:20.498+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/amazon_sale_report_dags.py for tasks to queue
+[2023-06-14T17:07:20.499+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:07:20.499+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:07:20.902+0000] {processor.py:836} INFO - DAG(s) dict_keys(['pull_data_from_postgresql']) retrieved from /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:07:20.956+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:07:20.956+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2023-06-14T17:07:20.982+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:07:20.981+0000] {dag.py:3490} INFO - Setting next_dagrun for pull_data_from_postgresql to 2023-06-13T00:00:00+00:00, run_after=2023-06-14T00:00:00+00:00
+[2023-06-14T17:07:21.001+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/amazon_sale_report_dags.py took 0.506 seconds
+[2023-06-14T17:07:51.130+0000] {processor.py:157} INFO - Started process (PID=813) to work on /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:07:51.131+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/amazon_sale_report_dags.py for tasks to queue
+[2023-06-14T17:07:51.132+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:07:51.132+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:07:51.506+0000] {processor.py:836} INFO - DAG(s) dict_keys(['pull_data_from_postgresql']) retrieved from /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:07:51.525+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:07:51.525+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2023-06-14T17:07:51.549+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:07:51.549+0000] {dag.py:3490} INFO - Setting next_dagrun for pull_data_from_postgresql to 2023-06-13T00:00:00+00:00, run_after=2023-06-14T00:00:00+00:00
+[2023-06-14T17:07:51.580+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/amazon_sale_report_dags.py took 0.453 seconds
+[2023-06-14T17:08:21.946+0000] {processor.py:157} INFO - Started process (PID=890) to work on /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:08:21.947+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/amazon_sale_report_dags.py for tasks to queue
+[2023-06-14T17:08:21.947+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:08:21.947+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:08:22.350+0000] {processor.py:836} INFO - DAG(s) dict_keys(['pull_data_from_postgresql']) retrieved from /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:08:22.378+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:08:22.377+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2023-06-14T17:08:22.412+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:08:22.412+0000] {dag.py:3490} INFO - Setting next_dagrun for pull_data_from_postgresql to 2023-06-13T00:00:00+00:00, run_after=2023-06-14T00:00:00+00:00
+[2023-06-14T17:08:22.437+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/amazon_sale_report_dags.py took 0.494 seconds
+[2023-06-14T17:08:52.640+0000] {processor.py:157} INFO - Started process (PID=967) to work on /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:08:52.640+0000] {processor.py:826} INFO - Processing file /opt/airflow/dags/amazon_sale_report_dags.py for tasks to queue
+[2023-06-14T17:08:52.641+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:08:52.641+0000] {dagbag.py:541} INFO - Filling up the DagBag from /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:08:53.083+0000] {processor.py:836} INFO - DAG(s) dict_keys(['pull_data_from_postgresql']) retrieved from /opt/airflow/dags/amazon_sale_report_dags.py
+[2023-06-14T17:08:53.103+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:08:53.102+0000] {dag.py:2726} INFO - Sync 1 DAGs
+[2023-06-14T17:08:53.128+0000] {logging_mixin.py:149} INFO - [2023-06-14T17:08:53.128+0000] {dag.py:3490} INFO - Setting next_dagrun for pull_data_from_postgresql to 2023-06-13T00:00:00+00:00, run_after=2023-06-14T00:00:00+00:00
+[2023-06-14T17:08:53.148+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/amazon_sale_report_dags.py took 0.512 seconds
