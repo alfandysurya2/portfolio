@@ -1,1 +1,3 @@
 logs/scheduler/latest
+logs/scheduler
+dags/_pycache_
