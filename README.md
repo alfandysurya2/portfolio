@@ -26,8 +26,8 @@ To run the code and reproduce the analysis in this project, the following depend
 - PostgreSQL
 
 ## General Setup Instructions:
-1. Clone or download the project repository from (my GitHub)[https://github.com/alfandysurya2/portfolio.git].
-2. Install Python from the official Python website [https://www.python.org/downloads/].
+1. Clone or download the project repository from [my GitHub](https://github.com/alfandysurya2/portfolio.git).
+2. Install Python from the official [Python website](https://www.python.org/downloads/).
 3. Install the necessary dependencies using pip or conda as you see in `requirements.txt` on each project folder.
 4. Refer to the documentation within the projects for detailed explanations and instructions on using specific functions or methods.
 
