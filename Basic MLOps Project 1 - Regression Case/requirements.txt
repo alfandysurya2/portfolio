@@ -1,1 +1,7 @@
+Flask
 missingno==0.5.2
+sklearn
+pandas
+numpy
+matplotlib
+seaborn

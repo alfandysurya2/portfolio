@@ -1,6 +1,7 @@
 # Airflow thing
 logs/scheduler/latest
 logs/scheduler
+logs/scheduler/
 dags/_pycache_
 
 # Byte-compiled / optimized / DLL files
