@@ -1,3 +1,87 @@
-<h1>
-Hello World
-</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>California Housing Price Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+    
+    .predict-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 3px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .predict-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <h1>California Housing Price Prediction</h1>
+      <form method="POST" action="{{ url_for('predict') }}">
+        <label for="median-income">Median Income:</label>
+        <input type="number" step="any" id="median-income" name="median-income" required>
+        
+        <label for="house-age">House Age:</label>
+        <input type="number" step="any" id="house-age" name="house-age" required>
+        
+        <label for="avg-rooms">Average number of Rooms:</label>
+        <input type="number" step="any" id="avg-rooms" name="avg-rooms" required>
+        
+        <label for="avg-bedrooms">Average number of Bedrooms:</label>
+        <input type="number" step="any" id="avg-bedrooms" name="avg-bedrooms" required>
+        
+        <label for="population">Population:</label>
+        <input type="number" step="any" id="population" name="population" required>
+        
+        <label for="avg-household-members">Average number of Household Members:</label>
+        <input type="number" step="any" id="avg-household-members" name="avg-household-members" required>
+        
+        <label for="latitude">Latitude:</label>
+        <input type="number" step="any" id="latitude" name="latitude" required>
+        
+        <label for="longitude">Longitude:</label>
+        <input type="number" step="any" id="longitude" name="longitude" required>
+        
+        <button class="predict-btn" type="submit">Predict</button>
+        <div class="placeholder">
+            <p>{{prediction_text}}</p>
+        </div>
+      </form>
+    </div>
+  </body>
+  </html>
