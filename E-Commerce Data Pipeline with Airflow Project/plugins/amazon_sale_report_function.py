@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
 
 # Function
 ## Histogram and Boxplot with Stats
@@ -116,3 +117,21 @@ def data_imputation(df, x, method):
     df_imputed[x] = X_imputed
 
     return df_imputed
+
+# Data Standardization
+def standardize(df, column):
+    df_copy = df.copy()
+    value = df[column].values.reshape(-1, 1)
+    scaler = StandardScaler()
+    value_scaled = scaler.fit_transform(value)
+    df_copy[f'{column}_scaled'] = value_scaled
+    return df_copy
+
+# Data Categorization
+def categorize_column(df, column, bins, labels, right=False):
+    df_copy = df.copy()
+    df_copy[f'{column}_category'] = pd.cut(df_copy[column], 
+                        bins=bins, 
+                        labels=labels, 
+                        right=right)
+    return df_copy
