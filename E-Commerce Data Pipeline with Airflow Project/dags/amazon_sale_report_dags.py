@@ -34,30 +34,59 @@ pull_data_task = PostgresOperator(
 )
 
 # Task to convert pulled data from PostgreSQL to Pandas Dataframe
-convert_to_df_task = PythonOperator(
+convert_to_dataframe = PythonOperator(
     task_id='convert_to_df',
     python_callable=convert_to_df,
+    provide_context=True,
     dag=dag
 )
 
+# Task to standardize data
 column_standardization = PythonOperator(
     task_id='column_standardization_task',
     python_callable=sr.column_standardization,
     provide_context=True,
-    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='postgre_data_pull') }}"},
+    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='convert_to_df') }}"},
     dag=dag
 )
+
+# Task to process column
+drop_columns = ['promotion_ids', 
+                'fulfilled_by', 
+                'unnamed_22', 
+                'currency', 
+                'ship_country']
+
+dropna_columns = ['courier_status', 
+                  'ship_city', 
+                  'ship_state', 
+                  'ship_postal_code']
 
 process_column = PythonOperator(
     task_id='column_processing_task',
     python_callable=sr.process_column,
     provide_context=True,
-    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='postgre_data_pull') }}"},
+    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='column_standardization') }}",
+               'drop_columns': drop_columns,
+               'dropna_columns': dropna_columns},
     dag=dag
 )
 
+# Task ro impute column
+x = 'amount'
+method = 'mean'
+
+data_imputation = PythonOperator(
+    task_id='column_processing_task',
+    python_callable=sr.process_column,
+    provide_context=True,
+    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='column_standardization') }}" ,
+               'x':x,
+               'method':method},
+    dag=dag)
+
 # Task dependencies
-start_task >> pull_data_task >> column_standardization
+start_task >> pull_data_task >> convert_to_dataframe >> column_standardization >> process_column >> data_imputation
 
 
 
