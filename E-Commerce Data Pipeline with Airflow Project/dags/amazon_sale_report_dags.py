@@ -3,8 +3,20 @@ from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
 from datetime import datetime
-from plugins import amazon_sale_report_function as sr
+import os
+import sys
 import pandas as pd
+
+# Get the current working directory
+current_dir = os.getcwd()
+project_dir = os.path.join(current_dir, 'E-Commerce Data Pipeline with Airflow Project')
+plugins_path = os.path.join(project_dir, 'plugins')
+print(plugins_path)
+
+# Add the plugins folder path to sys.path
+sys.path.append(plugins_path)
+
+import amazon_sale_report_function as sr
 
 # Function to Convert Pulled data from Postgres into pandas DataFrame
 def convert_to_df(**context):

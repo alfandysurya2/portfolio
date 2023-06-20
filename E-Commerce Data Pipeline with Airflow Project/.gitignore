@@ -2,7 +2,8 @@
 logs/scheduler/latest
 logs/scheduler
 logs/scheduler/
-dags/_pycache_
+dags/__pycache__
+plugins/__pycache__
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
