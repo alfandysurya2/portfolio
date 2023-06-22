@@ -2,21 +2,16 @@ from airflow import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
+from function.amazon_sale_report_function import F
 from datetime import datetime
-import os
-import sys
 import pandas as pd
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
 
-# Get the current working directory
-current_dir = os.getcwd()
-project_dir = os.path.join(current_dir, 'E-Commerce Data Pipeline with Airflow Project')
-plugins_path = os.path.join(project_dir, 'plugins')
-print(plugins_path)
-
-# Add the plugins folder path to sys.path
-sys.path.append(plugins_path)
-
-import amazon_sale_report_function as sr
+# import amazon_sale_report_function as sr
 
 # Function to Convert Pulled data from Postgres into pandas DataFrame
 def convert_to_df(**context):
@@ -46,17 +41,17 @@ pull_data_task = PostgresOperator(
 )
 
 # Task to convert pulled data from PostgreSQL to Pandas Dataframe
-convert_to_dataframe = PythonOperator(
-    task_id='convert_to_df',
+convert_to_dataframe_task = PythonOperator(
+    task_id='convert_to_df_task',
     python_callable=convert_to_df,
     provide_context=True,
     dag=dag
 )
 
 # Task to standardize data
-column_standardization = PythonOperator(
+column_standardization_task = PythonOperator(
     task_id='column_standardization_task',
-    python_callable=sr.column_standardization,
+    python_callable=F.column_standardization,
     provide_context=True,
     op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='convert_to_df') }}"},
     dag=dag
@@ -74,9 +69,9 @@ dropna_columns = ['courier_status',
                   'ship_state', 
                   'ship_postal_code']
 
-process_column = PythonOperator(
+process_column_task = PythonOperator(
     task_id='column_processing_task',
-    python_callable=sr.process_column,
+    python_callable=F.process_column,
     provide_context=True,
     op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='column_standardization') }}",
                'drop_columns': drop_columns,
@@ -88,9 +83,9 @@ process_column = PythonOperator(
 x = 'amount'
 method = 'mean'
 
-data_imputation = PythonOperator(
-    task_id='column_processing_task',
-    python_callable=sr.process_column,
+data_imputation_task = PythonOperator(
+    task_id='data_imputation_task',
+    python_callable=F.data_imputation,
     provide_context=True,
     op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='column_standardization') }}" ,
                'x':x,
@@ -98,7 +93,7 @@ data_imputation = PythonOperator(
     dag=dag)
 
 # Task dependencies
-start_task >> pull_data_task >> convert_to_dataframe >> column_standardization >> process_column >> data_imputation
+start_task >> pull_data_task >> convert_to_dataframe_task >> column_standardization_task >> process_column_task >> data_imputation_task
 
 
 

@@ -4,6 +4,8 @@ logs/scheduler
 logs/scheduler/
 dags/__pycache__
 plugins/__pycache__
+plugins/function/__pycache__
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
