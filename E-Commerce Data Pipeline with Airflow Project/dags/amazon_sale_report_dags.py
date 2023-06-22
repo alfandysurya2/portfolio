@@ -6,10 +6,8 @@ from function.amazon_sale_report_function import F
 from datetime import datetime
 import pandas as pd
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
+# from sklearn.impute import SimpleImputer # Needs to be fixed
+# from sklearn.preprocessing import StandardScaler # Needs to be fixed
 
 # import amazon_sale_report_function as sr
 
@@ -79,7 +77,7 @@ process_column_task = PythonOperator(
     dag=dag
 )
 
-# Task ro impute column
+# Task to impute column
 x = 'amount'
 method = 'mean'
 
