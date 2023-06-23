@@ -47,9 +47,9 @@ convert_to_dataframe_task = PythonOperator(
 )
 
 # Task to standardize data
-column_standardization_task = PythonOperator(
-    task_id='column_standardization_task',
-    python_callable=F.column_standardization,
+column_rename_task = PythonOperator(
+    task_id='column_rename_task',
+    python_callable=F.column_rename,
     provide_context=True,
     op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='convert_to_df') }}"},
     dag=dag
@@ -84,10 +84,21 @@ method = 'mean'
 data_imputation_task = PythonOperator(
     task_id='data_imputation_task',
     python_callable=F.data_imputation,
+    requirements='scikit-learn==1.2.1',
     provide_context=True,
     op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='column_processing_task') }}" ,
                'x':x,
                'method':method},
+    dag=dag)
+
+# Task to scale with standard scaler
+data_standardization_task = PythonOperator(
+    task_id='data_standardization_task',
+    python_callable=F.data_standardization,
+    requirements='scikit-learn==1.2.1',
+    provide_context=True,
+    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='data_imputation_task') }}" ,
+               'column':'amount'},
     dag=dag)
 
 # Task to categorize column
@@ -99,7 +110,7 @@ column_categorization_task = PythonOperator(
     task_id='data_categorization_task',
     python_callable=F.categorize_column,
     provide_context=True,
-    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='data_imputation_task') }}" ,
+    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='data_standardization_task') }}" ,
                'column':column,
                'bins':bins,
                'labels':labels,
@@ -110,9 +121,10 @@ column_categorization_task = PythonOperator(
 start_task >> \
 pull_data_task >> \
 convert_to_dataframe_task >> \
-column_standardization_task >> \
+column_rename_task >> \
 process_column_task >> \
 data_imputation_task >> \
+data_standardization_task >> \
 column_categorization_task
 
 

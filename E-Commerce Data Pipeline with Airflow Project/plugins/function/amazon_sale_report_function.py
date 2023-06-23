@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 ## Histogram and Boxplot with Stats
 class F:
     ## Columns name standardization
-    def column_standardization(df):
+    def column_rename(df):
         columns_list = df.columns
         modified_columns_list = []
         for i in columns_list:
@@ -43,7 +43,7 @@ class F:
         return df_imputed
 
     # Data Standardization
-    def standardize(df, column):
+    def data_standardization(df, column):
         df_copy = df.copy()
         value = df[column].values.reshape(-1, 1)
         scaler = StandardScaler()
