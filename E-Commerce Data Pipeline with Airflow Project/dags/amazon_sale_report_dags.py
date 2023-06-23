@@ -93,17 +93,27 @@ data_imputation_task = PythonOperator(
 # Task to categorize column
 bins = [0, 450, 900, np.inf]
 labels=['Low', 'Medium', 'High']
+column='amount'
+right=False
 column_categorization_task = PythonOperator(
     task_id='data_categorization_task',
     python_callable=F.categorize_column,
     provide_context=True,
     op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='data_imputation_task') }}" ,
-               'x':x,
-               'method':method},
+               'column':column,
+               'bins':bins,
+               'labels':labels,
+               'right':right},
     dag=dag)
 
 # Task dependencies
-start_task >> pull_data_task >> convert_to_dataframe_task >> column_standardization_task >> process_column_task >> data_imputation_task
+start_task >> \
+pull_data_task >> \
+convert_to_dataframe_task >> \
+column_standardization_task >> \
+process_column_task >> \
+data_imputation_task >> \
+column_categorization_task
 
 
 
