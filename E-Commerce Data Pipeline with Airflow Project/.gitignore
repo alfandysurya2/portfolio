@@ -3,6 +3,7 @@ logs/scheduler/latest
 logs/scheduler
 logs/scheduler/
 dags/__pycache__
+dags/__pycache__/
 plugins/__pycache__
 plugins/function/__pycache__
 .vscode/

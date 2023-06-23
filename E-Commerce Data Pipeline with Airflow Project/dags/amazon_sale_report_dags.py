@@ -5,7 +5,7 @@ from airflow.operators.python import PythonOperator
 from function.amazon_sale_report_function import F
 from datetime import datetime
 import pandas as pd
-import pandas as pd
+import numpy as np
 # from sklearn.impute import SimpleImputer # Needs to be fixed
 # from sklearn.preprocessing import StandardScaler # Needs to be fixed
 
@@ -85,7 +85,19 @@ data_imputation_task = PythonOperator(
     task_id='data_imputation_task',
     python_callable=F.data_imputation,
     provide_context=True,
-    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='column_standardization') }}" ,
+    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='column_processing_task') }}" ,
+               'x':x,
+               'method':method},
+    dag=dag)
+
+# Task to categorize column
+bins = [0, 450, 900, np.inf]
+labels=['Low', 'Medium', 'High']
+column_categorization_task = PythonOperator(
+    task_id='data_categorization_task',
+    python_callable=F.categorize_column,
+    provide_context=True,
+    op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='data_imputation_task') }}" ,
                'x':x,
                'method':method},
     dag=dag)
