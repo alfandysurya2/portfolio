@@ -6,10 +6,6 @@ from function.amazon_sale_report_function import F
 from datetime import datetime
 import pandas as pd
 import numpy as np
-# from sklearn.impute import SimpleImputer # Needs to be fixed
-# from sklearn.preprocessing import StandardScaler # Needs to be fixed
-
-# import amazon_sale_report_function as sr
 
 # Function to Convert Pulled data from Postgres into pandas DataFrame
 def convert_to_df(**context):
@@ -19,7 +15,7 @@ def convert_to_df(**context):
 
 # Define the DAG
 dag = DAG(
-    'pull_data_from_postgresql',
+    'amazon_sale_report_data_pipeline_dags',
     description='DAG to pull data from PostgreSQL',
     schedule_interval='0 0 * * *',  # Run once daily at midnight
     start_date=datetime(2023, 1, 1),
