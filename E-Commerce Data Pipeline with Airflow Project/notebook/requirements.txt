@@ -1,3 +1,5 @@
+# psycopg2
+missingno
 scikit-learn
 pandas
 numpy
