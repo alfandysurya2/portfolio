@@ -84,7 +84,6 @@ method = 'mean'
 data_imputation_task = PythonOperator(
     task_id='data_imputation_task',
     python_callable=F.data_imputation,
-    requirements='scikit-learn==1.2.1',
     provide_context=True,
     op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='column_processing_task') }}" ,
                'x':x,
@@ -95,7 +94,6 @@ data_imputation_task = PythonOperator(
 data_standardization_task = PythonOperator(
     task_id='data_standardization_task',
     python_callable=F.data_standardization,
-    requirements='scikit-learn==1.2.1',
     provide_context=True,
     op_kwargs={'df':"{{ task_instance.xcom_pull(task_ids='data_imputation_task') }}" ,
                'column':'amount'},
