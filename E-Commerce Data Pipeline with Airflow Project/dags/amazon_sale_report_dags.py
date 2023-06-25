@@ -2,6 +2,7 @@ from airflow import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
+from airflow.utils.trigger_rule import TriggerRule
 from function.amazon_sale_report_function import F
 from datetime import datetime
 import pandas as pd
@@ -111,6 +112,10 @@ column_categorization_task = PythonOperator(
                'right':right},
     dag=dag)
 
+# End the task
+end_task = EmptyOperator(task_id='end_task', 
+                         trigger_rule=TriggerRule.SKIP)
+
 # Task dependencies
 start_task >> \
 pull_data_task >> \
@@ -119,7 +124,8 @@ column_rename_task >> \
 process_column_task >> \
 data_imputation_task >> \
 data_standardization_task >> \
-column_categorization_task
+column_categorization_task >> \
+end_task
 
 
 
