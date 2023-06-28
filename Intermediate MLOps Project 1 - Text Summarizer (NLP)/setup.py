@@ -3,11 +3,11 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
-__version__ =  "0.0.o"
+__version__ =  "0.0.1"
 
 REPO_NAME = "portfolio"
 AUTHOR_USER_NAME = "alfandysurya2"
-SRC_REPO = "textSummarizer"
+SRC_REPO = "TextSummarizer"
 AUTHOR_EMAIL = "alfandy.surya2@gmail.com"
 
 setuptools.setup(
