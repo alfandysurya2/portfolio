@@ -1,0 +1,48 @@
+[2023-08-24 14:04:03,896: INFO: main: ----- Data Ingestion Stage Started -----]
+[2023-08-24 14:04:03,897: ERROR: main: [Errno 2] No such file or directory: 'config\\config.yaml']
+Traceback (most recent call last):
+  File "c:\Users\alfan\Projects\portfolio\Intermediate MLOps Project 1 - Text Summarizer (NLP)\main.py", line 8, in <module>
+    data_ingestion.main()
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\pipeline\stage_01_data_ingestion.py", line 10, in main
+    config = ConfigurationManager()
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\config\configuration.py", line 11, in __init__
+    self.config = read_yaml(config_filepath)
+  File "C:\Anaconda3\lib\site-packages\ensure\main.py", line 849, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\utils\common.py", line 34, in read_yaml
+    raise e
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\utils\common.py", line 27, in read_yaml
+    with open(path_to_yaml) as yaml_file:
+FileNotFoundError: [Errno 2] No such file or directory: 'config\\config.yaml'
+[2023-08-24 14:08:13,369: INFO: main: ----- Data Ingestion Stage Started -----]
+[2023-08-24 14:08:13,370: ERROR: main: [Errno 2] No such file or directory: 'config\\config.yaml']
+Traceback (most recent call last):
+  File "c:\Users\alfan\Projects\portfolio\Intermediate MLOps Project 1 - Text Summarizer (NLP)\main.py", line 8, in <module>
+    data_ingestion.main()
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\pipeline\stage_01_data_ingestion.py", line 10, in main
+    config = ConfigurationManager()
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\config\configuration.py", line 11, in __init__
+    self.config = read_yaml(config_filepath)
+  File "C:\Anaconda3\lib\site-packages\ensure\main.py", line 849, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\utils\common.py", line 34, in read_yaml
+    raise e
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\utils\common.py", line 27, in read_yaml
+    with open(path_to_yaml) as yaml_file:
+FileNotFoundError: [Errno 2] No such file or directory: 'config\\config.yaml'
+[2023-08-24 14:09:54,629: INFO: main: ----- Data Ingestion Stage Started -----]
+[2023-08-24 14:09:54,629: ERROR: main: [Errno 2] No such file or directory: 'C:\\Users\\alfan\\Projects\\portfolio\\config\\config.yaml']
+Traceback (most recent call last):
+  File "c:\Users\alfan\Projects\portfolio\Intermediate MLOps Project 1 - Text Summarizer (NLP)\main.py", line 8, in <module>
+    data_ingestion.main()
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\pipeline\stage_01_data_ingestion.py", line 10, in main
+    config = ConfigurationManager()
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\config\configuration.py", line 11, in __init__
+    self.config = read_yaml(config_filepath)
+  File "C:\Anaconda3\lib\site-packages\ensure\main.py", line 849, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\utils\common.py", line 34, in read_yaml
+    raise e
+  File "c:\users\alfan\projects\portfolio\intermediate mlops project 1 - text summarizer (nlp)\src\TextSummarizer\utils\common.py", line 27, in read_yaml
+    with open(path_to_yaml) as yaml_file:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\alfan\\Projects\\portfolio\\config\\config.yaml'
